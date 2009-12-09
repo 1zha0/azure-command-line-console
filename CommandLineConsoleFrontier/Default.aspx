@@ -71,9 +71,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">
-                                            try &quot;ver&quot; as Command, keep others empty.
-                                        </td>
+                                        <td colspan="2" style="text-align: center;" align="center">
+                                            <b>try &quot;ver&quot; as Command, keep others empty</b></td>
                                     </tr>
                                 </table>
                             </div>
@@ -110,9 +109,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">
-                                            these are predefined commands.
-                                        </td>
+                                        <td colspan="2" style="text-align: center;" align="center">
+                                            <b>these are predefined commands</b></td>
                                     </tr>
                                 </table>
                             </div>
