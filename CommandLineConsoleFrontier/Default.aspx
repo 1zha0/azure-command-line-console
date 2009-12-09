@@ -5,6 +5,27 @@
 <head runat="server">
     <title>Azure Command Line Console</title>
 </head>
+<style type="text/css">
+    body
+    {
+        background-color: #e1ddd9;
+        font-size: 12px;
+        color: #564b47;
+        padding: 20px;
+        margin: 0px;
+        text-align: center;
+    }
+    #inhalt
+    {
+        text-align: left;
+        vertical-align: middle;
+        margin: 0px auto;
+        padding: 0px;
+        width: 550px;
+        background-color: #ffffff;
+        border: 1px dashed #564b47;
+    }
+</style>
 <body>
     <center>
         <h1 style="text-align: center">
