@@ -128,6 +128,8 @@
             </asp:UpdatePanel>
         </div>
         </form>
+        <h3 style="text-align: right">
+            Prototype by: Liang (lzhao@cse.unsw.edu.au)</h3>
     </center>
 </body>
 </html>
