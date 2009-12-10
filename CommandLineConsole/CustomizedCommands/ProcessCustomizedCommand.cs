@@ -15,13 +15,23 @@ namespace CommandLineConsole.CustomizedCommands
             string output = null;
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = true;
+            process.StartInfo.ErrorDialog = false;
             process.StartInfo.FileName = "cmd";
             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             process.StartInfo.Arguments = "/c " + "\"" + (ct.Path == null ? (ct.Command.Contains(" ") == true ? "\"" + ct.Command + "\"" : ct.Command) : "\"" + ct.Path + "\\" + ct.Command + "\"") + " \"" + ct.Parameters + "\"\"";
             process.EnableRaisingEvents = false;
-            process.Start();
-            output = process.StandardOutput.ReadToEnd();
-            process.Close();
+            try
+            {
+                process.Start();
+                output += process.StandardOutput.ReadToEnd();
+                process.WaitForExit();
+                process.Close();
+            }
+            catch (Exception ex)
+            {
+                output = ex.ToString();
+            }
             return output;
         }
     }
