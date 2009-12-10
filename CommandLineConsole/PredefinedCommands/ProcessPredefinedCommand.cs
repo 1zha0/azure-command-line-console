@@ -61,7 +61,7 @@ namespace CommandLineConsole.PredefinedCommands
         private static string getProcesses()
         {
             ManagementClass processes = new ManagementClass("Win32_process");
-            string str = String.Format("{0,-25} {1,10} {2,-15} {3,9}{4}", "Process ID", "Processes", "User", "CPU Time", "\n");
+            string str = String.Format("{0,-25} {1,10} {2,-15} {3,9}{4}", "Processes", "Process ID", "User", "CPU Time", "\n");
             str += String.Format("========================= ========== =============== =========\n");
             foreach (ManagementObject o in processes.GetInstances())
             {

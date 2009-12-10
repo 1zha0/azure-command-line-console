@@ -17,7 +17,7 @@ namespace CommandLineConsole.CustomizedCommands
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.FileName = "cmd";
             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            process.StartInfo.Arguments = "/c " + "\""+ ct.Path + ct.Command + "\" " + ct.Parameters;
+            process.StartInfo.Arguments = "/c " + "\"" + (ct.Path == null ? (ct.Command.Contains(" ") == true ? "\"" + ct.Command + "\"" : ct.Command) : "\"" + ct.Path + "\\" + ct.Command + "\"") + " \"" + ct.Parameters + "\"\"";
             process.EnableRaisingEvents = false;
             process.Start();
             output = process.StandardOutput.ReadToEnd();

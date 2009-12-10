@@ -21,10 +21,17 @@ namespace CommandLineConsoleFrontier
 
         protected void processCustomizedCommandButton_Click(object sender, EventArgs e)
         {
-            customizedCommand.Path = (parametersTextBox.Text.Length != 0 ? parametersTextBox.Text : null);
+            customizedCommand.Path = (pathTextBox.Text.Length != 0 ? pathTextBox.Text : null);
             customizedCommand.Command = (commandTextBox.Text.Length != 0 ? commandTextBox.Text : null);
             customizedCommand.Parameters = (parametersTextBox.Text.Length != 0 ? parametersTextBox.Text : null);
-            resultTextBox.Text = csr.processCommand(customizedCommand);
+            try
+            {
+                resultTextBox.Text = csr.processCommand(customizedCommand);
+            }
+            catch (Exception ex)
+            {
+                resultTextBox.Text = ex.ToString();
+            }
         }
 
         protected void applicationsCommandButton_Click(object sender, EventArgs e)
