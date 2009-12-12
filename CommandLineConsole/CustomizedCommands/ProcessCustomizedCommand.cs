@@ -11,6 +11,10 @@ namespace CommandLineConsole.CustomizedCommands
     {
         public static string processCustomizedCommand(CommandType ct)
         {
+            if (ct.Command == null)
+            {
+                return "Not implemented yet.";
+            }
             Process process = new Process();
             string output = null;
             process.StartInfo.UseShellExecute = false;
@@ -19,7 +23,7 @@ namespace CommandLineConsole.CustomizedCommands
             process.StartInfo.ErrorDialog = false;
             process.StartInfo.FileName = "cmd";
             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            process.StartInfo.Arguments = "/c " + "\"" + (ct.Path == null ? (ct.Command.Contains(" ") == true ? "\"" + ct.Command + "\"" : ct.Command) : "\"" + ct.Path + "\\" + ct.Command + "\"") + " \"" + ct.Parameters + "\"\"";
+            process.StartInfo.Arguments = "/c " + "\"" + (ct.Path == null ? (ct.Command.Contains(" ") ? "\"" + ct.Command + "\"" : ct.Command) : "\"" + ct.Path + "\\" + ct.Command + "\"") + (ct.Parameters == null ? null : " \"" + ct.Parameters + "\"") + "\"";
             process.EnableRaisingEvents = false;
             try
             {

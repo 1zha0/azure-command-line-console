@@ -31,11 +31,11 @@
         <h1 style="text-align: center">
             Azure Command Line Console</h1>
         <form id="commandForm" runat="server">
-        <div style="width: 90%; text-align: center;" align="center">
-            <asp:ScriptManager ID="ScriptManager1" runat="server">
-            </asp:ScriptManager>
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <div style="width: 90%; text-align: center;" align="center">
+                    <asp:ScriptManager ID="ScriptManager1" runat="server">
+                    </asp:ScriptManager>
                     <center>
                         <div style="width: 65%;">
                             <div style="float: left; width: 45%;">
@@ -72,7 +72,8 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="text-align: center;" align="center">
-                                            <b>try &quot;ver&quot; as Command, keep others empty</b></td>
+                                            <b>try &quot;ver&quot; as a Command to test, keep others empty</b>
+                                        </td>
                                     </tr>
                                 </table>
                             </div>
@@ -110,7 +111,8 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="text-align: center;" align="center">
-                                            <b>these are predefined commands</b></td>
+                                            <b>these are predefined commands</b>
+                                        </td>
                                     </tr>
                                 </table>
                             </div>
@@ -122,9 +124,9 @@
                                 Width="800px"></asp:TextBox>
                         </div>
                     </center>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </div>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
         </form>
         <h3 style="text-align: right">
             Prototype by: Liang (lzhao@cse.unsw.edu.au)</h3>
