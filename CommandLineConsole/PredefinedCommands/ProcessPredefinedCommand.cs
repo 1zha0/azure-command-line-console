@@ -6,6 +6,7 @@ using System.Management;
 using CommandLineConsole.Common;
 using CommandLineConsole.CustomizedCommands;
 using System.Diagnostics;
+using CommandLineConsole.Misc;
 
 namespace CommandLineConsole.PredefinedCommands
 {
@@ -44,6 +45,8 @@ namespace CommandLineConsole.PredefinedCommands
                     return getPerformance();
                 case CommandItem.Processes:
                     return getProcesses();
+                case CommandItem.Processors:
+                    return getProcessors();
                 case CommandItem.Services:
                     return getServices();
                 case CommandItem.Users:
@@ -72,6 +75,100 @@ namespace CommandLineConsole.PredefinedCommands
                 str += String.Format("{0,-25} {1,10} {2,-15} {3,9}{4}", o["Name"], o["ProcessId"], owner[0], dt.ToString("H:mm:ss"), "\n");
             }
             return str;
+        }
+
+        private static string getProcessors()
+        {
+            //generate output data
+            CPUInfo cpuInfo = new CPUInfo();
+
+
+            ManagementClass mgmt = new ManagementClass("Win32_Processor");
+            ManagementObjectCollection objCol = mgmt.GetInstances();
+            foreach (ManagementObject obj in objCol)
+            {
+                if (cpuInfo.Id == String.Empty)
+                {
+                    // only return processor id from first CPU
+                    cpuInfo.Id = obj.Properties["ProcessorId"].Value.ToString();
+                }
+                if (cpuInfo.Socket == String.Empty)
+                {
+                    // only return socket designation from first CPU
+                    cpuInfo.Socket = obj.Properties["SocketDesignation"].Value.ToString();
+                }
+                if (cpuInfo.Name == String.Empty)
+                {
+                    // only return name from first CPU
+                    cpuInfo.Name = obj.Properties["Name"].Value.ToString();
+                }
+                if (cpuInfo.Manufacturer == String.Empty)
+                {
+                    // only return manufacturer from first CPU
+                    cpuInfo.Manufacturer = obj.Properties["Manufacturer"].Value.ToString();
+                }
+                if (cpuInfo.Descr == String.Empty)
+                {
+                    // only return description from first CPU
+                    cpuInfo.Descr = obj.Properties["Manufacturer"].Value.ToString();
+                }
+                if (cpuInfo.Speed == 0)
+                {
+                    // only return clock speed from first CPU
+                    cpuInfo.Speed = Convert.ToInt32(obj.Properties["CurrentClockSpeed"].Value.ToString());
+                }
+                if (cpuInfo.ArchId == -1)
+                {
+                    // only return architecture from first CPU
+                    cpuInfo.ArchId = Convert.ToInt16(obj.Properties["Architecture"].Value.ToString());
+                }
+                if (cpuInfo.FamilyId == -1)
+                {
+                    // only return family from first CPU
+                    cpuInfo.FamilyId = Convert.ToInt16(obj.Properties["Family"].Value.ToString());
+                }
+                if (cpuInfo.L2CacheSize == 0)
+                {
+                    // only return L2 cache size from first CPU
+                    cpuInfo.L2CacheSize = Convert.ToInt32(obj.Properties["L2CacheSize"].Value.ToString());
+                }
+                if (cpuInfo.L3CacheSize == 0)
+                {
+                    // only return L3 cache size from first CPU
+                    cpuInfo.L3CacheSize = Convert.ToInt32(obj.Properties["L3CacheSize"].Value.ToString());
+                }
+                if (cpuInfo.Cores == 0)
+                {
+                    // only return cpu cores from first CPU
+                    cpuInfo.Cores = Convert.ToInt16(obj.Properties["NumberOfCores"].Value.ToString());
+                }
+                if (cpuInfo.Load == 0)
+                {
+                    // only return cpu load percentage from first CPU
+                    cpuInfo.Load = Convert.ToInt16(obj.Properties["LoadPercentage"].Value.ToString());
+                }
+                if (cpuInfo.FSBClock == 0)
+                {
+                    // only return cpu fsb (external clock) speed from first CPU
+                    cpuInfo.FSBClock = Convert.ToInt32(obj.Properties["ExtClock"].Value.ToString());
+                }
+            }
+
+            string output = String.Format("{0,-25} {1,-14}{2}", "CPU ID:", cpuInfo.Id.ToString(), "\n");
+            output += String.Format("{0,-25} {1,-14}{2}", "CPU Manufacturer:", cpuInfo.Manufacturer.ToString(), "\n");
+            output += String.Format("{0,-25} {1,-14}{2}", "CPU Clock Speed:", cpuInfo.Speed.ToString() + "MHz", "\n");
+            output += String.Format("{0,-25} {1,-14}{2}", "CPU Architecture:", cpuInfo.Arch + " (" + cpuInfo.ArchId.ToString() + ")", "\n");
+            output += String.Format("{0,-25} {1,-14}{2}", "CPU Cores:", cpuInfo.Cores.ToString(), "\n");
+            output += String.Format("{0,-25} {1,-14}{2}", "CPU Description:", cpuInfo.Descr, "\n");
+            output += String.Format("{0,-25} {1,-14}{2}", "CPU L2 Cache Size:", cpuInfo.L2CacheSize.ToString() + "KB", "\n");
+            output += String.Format("{0,-25} {1,-14}{2}", "CPU L3 Cache Size:", cpuInfo.L3CacheSize.ToString() + "KB", "\n");
+            output += String.Format("{0,-25} {1,-14}{2}", "CPU Name:", cpuInfo.Name, "\n");
+            output += String.Format("{0,-25} {1,-14}{2}", "CPU Socket Type:", cpuInfo.Socket, "\n");
+            output += String.Format("{0,-25} {1,-14}{2}", "CPU Family:", cpuInfo.Family, "\n");
+            output += String.Format("{0,-25} {1,-14}{2}", "CPU Load:", cpuInfo.Load.ToString() + "%", "\n");
+            output += String.Format("{0,-25} {1,-14}{2}", "CPU FSB Clock:", cpuInfo.FSBClock.ToString() + "MHz", "\n");
+
+            return output;
         }
 
         private static string getServices()

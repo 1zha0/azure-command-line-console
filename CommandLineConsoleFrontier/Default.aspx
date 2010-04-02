@@ -110,6 +110,12 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td>
+                                            <asp:Button ID="processorsCommandButton" runat="server" OnClick="processorsCommandButton_Click"
+                                                Text="Processors" Width="120px" />
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td colspan="2" style="text-align: center;" align="center">
                                             <b>these are predefined commands</b>
                                         </td>

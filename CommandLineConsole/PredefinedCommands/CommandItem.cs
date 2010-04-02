@@ -9,6 +9,7 @@ namespace CommandLineConsole.PredefinedCommands
     {
         Applications,
         Processes,
+        Processors,
         Services,
         Performance,
         Networking,

@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="CustomizedCommands\ProcessCustomizedCommand.cs" />
     <Compile Include="IConsoleService.cs" />
+    <Compile Include="Misc\CPUInfo.cs" />
     <Compile Include="PredefinedCommands\CommandItem.cs" />
     <Compile Include="PredefinedCommands\ProcessPredefinedCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

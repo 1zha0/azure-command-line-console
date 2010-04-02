@@ -75,5 +75,12 @@ namespace CommandLineConsoleFrontier
             predefinedCommand.Command = "Users";
             resultTextBox.Text = csr.processCommand(predefinedCommand);
         }
+
+        protected void processorsCommandButton_Click(object sender, EventArgs e)
+        {
+            predefinedCommand.Path = "precomm://";
+            predefinedCommand.Command = "Processors";
+            resultTextBox.Text = csr.processCommand(predefinedCommand);
+        }
     }
 }
