@@ -1,17 +1,7 @@
-************************************************************
-*
-*                                                           *
-*              Azure Command Line Console                   *
-*                                                           *
-*************************************************************
+# What is about?
 
+It is an interactive console which takes user's command line from the input box, processing on Azure Platform, and returning results back to the browser.
 
-A service based command line console. It creates new process 
-in Azure Platform to run console-based commands, returning 
-results back to the front-end of web portal. It is quite useful 
-for explorering the inside of Azure Platform.
+You are able to run many Windows commands in Azure Platform, such as `ver`, `dir`. But not all of them. Some commands, like `format`, `label` and etc., cannot be processed due to privilege setting on Azure Platform. But you can always find some interesting commands to get interesting results back.
 
-
-                                                  Liang
-
-                                               Dec. 11, 2009
+With this tool, you are able to look inside Azure, to get better understanding of Azure Platform, and maybe, to find some way to hack the system.
